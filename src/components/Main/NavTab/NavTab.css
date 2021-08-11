@@ -1,0 +1,26 @@
+.nav-tab{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 308px;
+	color: #FFFFFF;
+	margin-bottom: 30px;
+}
+
+.nav-tab__btn{
+	width: 30%;
+	min-height: 36px;
+	background: #E8E8E8;
+	border-radius: 10px;
+	display: flex;
+  justify-content: center;
+}
+
+.nav-tab__link{
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 16px;
+	color: #FFFFFF;
+	text-decoration: none;
+	align-self: center;
+}

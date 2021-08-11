@@ -1,0 +1,38 @@
+.footer{
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer__heading{
+	margin: 79px auto 20px;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 16px;
+	text-align: center;
+	color: #A0A0A0;
+}
+
+.footer__sections{
+	border-top: 1px solid #E8E8E8;
+	display: grid;
+	grid-template-columns: 857px 120px 42px 61px;
+	grid-column-gap: 20px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+
+.footer__section{
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 13px;
+	line-height: 16px;
+	color: #000000;
+}
+
+.footer__section_year{
+	margin: 0;
+}
