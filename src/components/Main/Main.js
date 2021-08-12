@@ -9,17 +9,17 @@ import AboutMe from './AboutMe/AboutMe';
 import Portfolio from './Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-
+import Navigation from '../Navigation/Navigation';
 
 function Main({isLogged, ...props}){
 	return(
 		<>
-			<Header isLogged={isLogged}>
-        <nav className={`menu ${props.isLogged && 'menu__full'}`}>
+			<Header>
+			{isLogged ? <Navigation /> : (<nav className="menu" >
           <NavLink className='menu__button menu__button_register' to='/signup'>Регистрация</NavLink>
           <NavLink className='menu__button menu__button_login menu__button_active' to='/signin'>Войти</NavLink>
-        </nav>
-      </Header>
+        </nav>)}
+			</Header>
 			<main className="content">
 				<Promo />
 				<AboutProject />

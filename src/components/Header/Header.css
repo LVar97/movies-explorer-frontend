@@ -14,7 +14,12 @@
 
 .header__logo{
 	margin: 18px auto 18px 70px;
-	
+	transition: opacity 0.5s ease;
+}
+
+.header__logo:hover{
+	opacity: 0.8;
+	cursor: pointer;
 }
 
 .header__logo_access{
@@ -44,6 +49,7 @@
 	font-size: 12px;
 	line-height: 16px;
 	padding-top: 8px;
+	transition: opacity 0.5s ease;
 }
 
 .menu__button_active{
@@ -58,4 +64,35 @@
 
 .menu__button_login{
 	width: 76px;
+}
+
+.menu__button:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+/* не более 767px */
+@media screen and (max-width: 767px) {
+  .header__logo{
+		margin: 18px auto 18px 14px;
+	}
+	.menu{
+		margin-right: 30px;
+		height: 32px;
+	}
+}
+
+@media screen and (max-width: 425px){
+	.menu{
+		margin-right: 14px;
+		height: 26px;
+	}
+	.menu__button{
+		font-size: 10px;
+		padding-top: 5px;
+		transition: opacity 0.5s ease;
+	}
+	.header__logo{
+		height: 38px;
+	}
 }

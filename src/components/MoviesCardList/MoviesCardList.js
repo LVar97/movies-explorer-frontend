@@ -5,10 +5,9 @@ function MoviesCardList({...props}){
 	return(
 		<section className="movies-list">
 			<ul className="movies-list__cards">
-				{/* {props.children} */}
-				<MoviesCard/>
+				<MoviesCard name={props.name}/>
 			</ul>
-			<button className='movies-list__btn-more' type='button'>Ещё</button>
+			<button className={`movies-list__btn-more ${props.isSavedMovies && 'movies-list__btn-more_hidden'}`} type='button'>Ещё</button>
 		</section>
 	);
 }

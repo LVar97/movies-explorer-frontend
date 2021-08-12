@@ -36,10 +36,7 @@
 .profile__input{
 	border: none;
 	margin-left: 170px;
-}
-
-.profile__input_name{
-	
+	text-align: right;
 }
 
 .profile__input_email{

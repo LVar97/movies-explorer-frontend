@@ -65,7 +65,7 @@
 
 
 .switch:checked + div {
-	background-color: #f0efef;
+	background-color: #EBEBEB;
 }
 
 .switch + div > div {
@@ -73,7 +73,7 @@
 	width: 8px; 
 	height: 8px;
 	border-radius: inherit;
-	background: #ffffff;
+	background: #F5F5F5;
 	-webkit-transition-timing-function: cubic-bezier(1,0,0,1);
 	transition-timing-function: cubic-bezier(1,0,0,1);
 	-webkit-transition-duration: 0.4s;

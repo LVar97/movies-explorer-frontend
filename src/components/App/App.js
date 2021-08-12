@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink} from 'react-router-dom';
 import './App.css';
 import Main from "../Main/Main";
 import Movies from '../Movies/Movies';
@@ -10,7 +10,7 @@ import Register from '../Register/Register';
 import Header from '../Header/Header';
 import FormScreen from '../FormScreen/FormScreen';
 import NotFound from '../NotFound/NotFound';
-
+import Navigation from '../Navigation/Navigation';
 
 function App() {
   const [isScreenAccess, setIsScreenAccess] = React.useState(true);
@@ -28,13 +28,13 @@ function App() {
           <Main isLogged={isLogged}/>
         </Route>
         <Route path="/movies">
-          <Movies />
+          <Movies isLogged={isLogged}/>
         </Route>
-        {/* <Route path="/saved-movies">
-          <SavedMovies/>
-        </Route> */}
+        <Route path="/saved-movies">
+          <SavedMovies isLogged={isLogged}/>
+        </Route>
         <Route path="/profile">
-          <Profile/>
+          <Profile isLogged={isLogged}/>
         </Route>
         <Route path="/signin">
           <Login 

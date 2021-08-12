@@ -1,7 +1,7 @@
 import './MoviesCard.css';
 import card from '../../images/card.png';
 
-function MoviesCard(){
+function MoviesCard(props){
 	return(
 		<li className="movies-card">
       <div className="movies-card__description">
@@ -9,7 +9,7 @@ function MoviesCard(){
 				<p className="movies-card__duration">27 минут</p>
       </div>
 			<img className="movies-card__cover" src={card} alt="Обложка фильма"/>
-			<button className="movies-card__btn-save">Сохранить</button>
+			<button className="movies-card__btn-save">{props.name}</button>
     </li>
 	);
 }

@@ -14,6 +14,7 @@
 	border-radius: 10px;
 	display: flex;
   justify-content: center;
+	transition: opacity 0.5s ease;
 }
 
 .nav-tab__link{
@@ -23,4 +24,23 @@
 	color: #FFFFFF;
 	text-decoration: none;
 	align-self: center;
+}
+
+.nav-tab__btn:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 425px){
+	.nav-tab{
+		width: 258px;
+		margin-bottom: 17px;
+	}
+	.nav-tab__btn{
+		min-height: 26px;
+	}
+	.nav-tab__link{
+		font-size: 10px;
+		line-height: 16px;
+	}
 }

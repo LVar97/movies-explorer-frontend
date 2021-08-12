@@ -1,8 +1,17 @@
 import './Profile.css';
+import Header from '../Header/Header';
+import Navigation from '../Navigation/Navigation';
+import { NavLink } from 'react-router-dom';
 
-function Profile(){
+function Profile({isLogged}){
 	return(
 		<section className="profile">
+			<Header>
+			{isLogged ? <Navigation /> : (<nav className="menu" >
+          <NavLink className='menu__button menu__button_register' to='/signup'>Регистрация</NavLink>
+          <NavLink className='menu__button menu__button_login menu__button_active' to='/signin'>Войти</NavLink>
+        </nav>)}
+			</Header>
 			<h1 className="profile__hello-title hello-title">Привет, Варвара!</h1>
 			<form className="profile__form">
 				<label className="profile__label">Имя

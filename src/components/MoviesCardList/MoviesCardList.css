@@ -29,4 +29,14 @@
 	color: #000000;
 	border: none;
 	margin: 50px auto 80px;
+	transition: opacity 0.5s ease;
+}
+
+.movies-list__btn-more_hidden{
+	display: none;
+}
+
+.movies-list__btn-more:hover{
+	opacity: .8;
+	cursor: pointer;
 }

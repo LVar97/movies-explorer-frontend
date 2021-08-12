@@ -36,3 +36,38 @@
 .footer__section_year{
 	margin: 0;
 }
+
+.footer__section_link{
+	transition: opacity 0.5s ease;
+}
+
+.footer__section_link:hover{
+	opacity: 0.7;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 770px){
+	.footer__sections{
+		grid-template-columns: 425px 120px 42px 61px;
+	}
+}
+
+@media screen and (max-width: 425px){
+	.footer__heading{
+		font-size: 12px;
+		line-height: 15px;
+	}
+	.footer__sections{
+		grid-template-columns: 300px;
+		grid-template-rows: repeat(3, 15px);
+		justify-items: center;
+		grid-row-gap: 12px;
+		padding-top: 30px;
+		margin-bottom: 10px;
+	}
+	.footer__section_year{
+		grid-row: 5;
+		margin-top: 6px;
+	}
+	
+}

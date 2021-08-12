@@ -51,8 +51,72 @@
 	line-height: 17px;
 	color: #000000;
 	margin-right: 20px;
+	transition: opacity .5s ease;
 }
 
 .about-me__link:last-of-type{
 	margin-right: 0;
+}
+
+.about-me__link:hover{
+	opacity: 0.7;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 770px){
+	.about-me__subtitle{
+		margin: 90px auto 23px 50px;
+	}
+	.about-me__block{
+		margin-bottom: 91px;
+	}
+	.about-me__blocks_text{
+		width: 350px;
+	}
+	.about-me__blocks_photo{
+		width: 255px;
+		height: 307px;
+	}
+	.about-me__subtitle_block{
+		margin: 16px 0 20px;
+		font-size: 12px;
+		line-height: 18px;
+	}
+	.about-me__description{
+		line-height: 18px;
+		margin-bottom: 87px;
+	}
+}
+
+@media screen and (max-width: 425px){
+	.about-me__subtitle{
+		margin: 70px 18px 28px;
+	}
+	.about-me__block{
+		flex-direction: column-reverse;
+		margin-bottom: 69px;
+	}
+	.about-me__blocks{
+		margin-top: 60px;
+	}
+	.about-me__blocks_text{
+		margin-top: 40px;
+		width: 292px;
+	}
+	.about-me__blocks_photo{
+		width: 292px;
+		height: 352px;
+	}
+	.about-me__subtitle_block{
+		margin: 20px auto;
+		font-size: 11px;
+		line-height: 16px;
+	}
+	.about-me__description{
+		margin-bottom: 40px;
+		text-align: justify;
+	}
+	.about-me__link{
+		margin-right: 26px;
+	}
 }
