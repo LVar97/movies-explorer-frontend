@@ -11,7 +11,7 @@ function Register(props){
 		linkName='Войти'
 		isScreenAccess={props.isScreenAccess}>
 			<label className='form__label'>{props.name}</label>
-			<input className='form__input' type='text'/>
+			<input className='form__input' type='text' required maxLength="30" minLength="2"/>
 			<span className='form__error-message'>Что-то пошло не так...</span>
 		</FormScreen>
 	);

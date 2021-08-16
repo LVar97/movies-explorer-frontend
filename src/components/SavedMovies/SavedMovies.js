@@ -6,14 +6,15 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import { NavLink } from 'react-router-dom';
 
-function SavedMovies({isLogged}){
+function SavedMovies({isLogged, isMobile, handleBurgerClick}){
 	return(
 		<section className="save-movies">
 			<Header>
-			{isLogged ? <Navigation /> : (<nav className="menu" >
+			{isLogged ? <Navigation isMobile={isMobile}/> : (<nav className="menu" >
           <NavLink className='menu__button menu__button_register' to='/signup'>Регистрация</NavLink>
           <NavLink className='menu__button menu__button_login menu__button_active' to='/signin'>Войти</NavLink>
         </nav>)}
+				<div className={`menu__burger ${isMobile && isLogged ? 'menu__burger_active' : ''}`} onClick={handleBurgerClick}></div>
 			</Header>
 			<SearchForm/>
 			<MoviesCardList

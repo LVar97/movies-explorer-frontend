@@ -41,6 +41,9 @@
 	border: none;
 	border-bottom: 1px solid #E8E8E8;
 	padding-bottom: 10px;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 17px;
 }
 
 .form__input_err{
@@ -103,4 +106,41 @@
 	margin-left: 6px;
 	text-decoration: none;
 	color: #000000;
+}
+
+@media screen and (max-width: 770px){
+	.form{
+		margin: 232px auto;
+	}
+	.form__container{
+		width: 51%;
+	}
+}
+
+@media screen and (max-width: 425px){
+	.form{
+		margin: 56px auto 30px;
+	}
+	.form__container{
+		width: 81%;
+	}
+	.form__title{
+		margin: 50px auto 80px;
+		text-align: center;
+	}
+	.form__access-button{
+		font-size: 12px;
+		line-height: 15px;
+		margin-top: 222px;
+		margin-bottom: 14px;
+		padding: 0;
+		border: none;
+	}
+	.form__access-button_login{
+		margin-top: 291px;
+	}
+	.form__caption{
+		font-size: 12px;
+		line-height: 15px;
+	}
 }

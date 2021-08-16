@@ -31,6 +31,7 @@
 
 .profile__label:last-of-type{
 	border-bottom: none;
+	margin-bottom: 220px;
 }
 
 .profile__input{
@@ -41,7 +42,6 @@
 
 .profile__input_email{
 	margin-top: 17px;
-	margin-bottom: 220px;
 }
 
 .profile__btn{
@@ -64,4 +64,50 @@
 .profile__btn_exit{
 	color: #FF4062;
 	
+}
+
+@media screen and (max-width: 770px){
+	.profile__hello-title{
+		margin: 236px auto 96px;
+	}
+	.profile__form{
+		width: 53%;
+	}
+	.profile__label{
+		padding-bottom: 17px;
+	}
+	.profile__input{
+		margin-left: 147px;
+	}
+	.profile__label:last-of-type{
+		margin-bottom: 210px;
+	}
+}
+
+@media screen and (max-width: 425px){
+	.profile__hello-title{
+		margin: 70px auto 80px;
+	}
+	.profile__form{
+		width: 81%;
+	}
+	.profile__label{
+		padding-bottom: 17px;
+	}
+	.profile__input{
+		margin-left: 20px;
+	}
+	.profile__input_name{
+		margin-left: 35px;
+	}
+	.profile__label:last-of-type{
+		margin-bottom: 379px;
+	}
+	.profile__btn{
+		width: 81%;
+		font-size: 12px;
+	}
+	.profile__btn_exit{
+		margin-bottom: 40px;
+	}
 }

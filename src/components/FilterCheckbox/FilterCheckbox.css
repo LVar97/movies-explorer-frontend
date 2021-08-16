@@ -7,7 +7,7 @@
 }
 
 .switch-container {
-	position: absolute;
+	position: fixed;
 	top: 232px; 
 	left: 50%;
 	-webkit-transform: translate3d( -50%, -50%, 0 );
@@ -103,3 +103,19 @@
 	transform: translate3d( -20px, 0, 0);
 }
 
+@media screen and (max-width: 770px){
+	.switch-container {
+		top: 260px;
+		margin-top: 0; 
+	}
+}
+@media screen and (max-width: 425px){
+	.switch-btn__label{
+		font-size: 11px;
+	}
+	.switch-container {
+		top: 265px; 
+		margin-top: 0;
+		width: 148px;
+	}
+}

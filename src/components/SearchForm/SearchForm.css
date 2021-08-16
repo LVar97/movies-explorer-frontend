@@ -46,3 +46,31 @@
 	width: 90%;
 	border-top: 1px solid #E8E8E8;
 }
+
+@media screen and (max-width: 770px){
+	.search-form__container{
+		width: 92%;
+		margin: 80px auto 41px;
+	}
+	.search-form__input{
+		width: 634px;
+	}
+	.search-form__line{
+		margin: 99px auto 10px;
+		width: 92%;
+	}
+}
+
+@media screen and (max-width: 425px){
+	.search-form__container{
+		width: 91%;
+		margin: 80px auto 47px;
+	}
+	.search-form__input{
+		width: 218px;
+	}
+	.search-form__line{
+		margin: 105px auto 10px;
+		width: 91%;
+	}
+}

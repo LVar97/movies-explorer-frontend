@@ -37,6 +37,9 @@
 		font-size: 12px;
 		line-height: 18px;
 	}
+	.block{
+		width: 87%;
+	}
 }
 
 @media screen and (max-width: 425px){

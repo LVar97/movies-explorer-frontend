@@ -11,14 +11,15 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 
-function Main({isLogged, ...props}){
+function Main({isLogged, isMobile, handleBurgerClick}){
 	return(
 		<>
 			<Header>
-			{isLogged ? <Navigation /> : (<nav className="menu" >
+			{isLogged ? <Navigation isMobile={isMobile}/> : (<nav className="menu" >
           <NavLink className='menu__button menu__button_register' to='/signup'>Регистрация</NavLink>
           <NavLink className='menu__button menu__button_login menu__button_active' to='/signin'>Войти</NavLink>
         </nav>)}
+				<div className={`menu__burger ${isMobile && isLogged ? 'menu__burger_active' : ''}`} onClick={handleBurgerClick}></div>
 			</Header>
 			<main className="content">
 				<Promo />

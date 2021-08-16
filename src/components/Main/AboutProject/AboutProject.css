@@ -4,12 +4,13 @@
 }
 
 .about-project__subtitle{
+	/* width: 600px; */
 	margin: 110px auto 23px 70px;
 }
 
 .about-project__block{
 	display: flex;
-	justify-content: start;
+	justify-content: flex-start;
 }
 
 .about-project__blocks{
@@ -107,7 +108,7 @@
 	.about-project__block{
 		display: flex;
 		flex-direction: column;
-		justify-content: start;
+		justify-content: flex-start;
 	}
 	.about-project__description{
 		margin: 18px 0 0;

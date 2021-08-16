@@ -1,7 +1,7 @@
 .error{
 	width: 1280px;
 	margin: 0 auto;
-	font-family: 'Inter';
+	font-family: 'Inter', sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	color: #000000;
@@ -35,4 +35,36 @@
 	line-height: 17px;
 	text-align: center;
 	color: #000000;
+}
+
+@media screen and (max-width: 770px){
+	.error{
+		width: 768px;
+	}
+	.error__content{
+		margin: 408px auto 184px;
+	}
+}
+
+@media screen and (max-width: 425px){
+	.error{
+		width: 320px;
+	}
+	.error__content{
+		width: 300px;
+		margin: 329px auto 284px;
+	}
+	.error__status{
+		font-size: 80px;
+		line-height: 97px;
+		margin-bottom: 10px;
+	}
+	.error__text{
+		font-size: 12px;
+		line-height: 15px;
+	}
+	.error__link{
+		font-size: 12px;
+		line-height: 15px;
+	}
 }

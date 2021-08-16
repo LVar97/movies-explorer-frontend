@@ -1,9 +1,8 @@
 .page{
-	font-family: 'Inter';
+	font-family: 'Inter', sans-serif;
 	font-style: normal;
 	width: 1280px;
 	margin: 0 auto;
-	overflow: hidden;
 }
 
 @media screen and (max-width: 770px){
