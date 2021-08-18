@@ -7,12 +7,11 @@
 	width: 90%;
 	margin: 80px auto 29px;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 }
 
 .search-form__input{
-	width: 1076px;
+	width: 95%;
 	height: 50px;
 	border: none;
 	background: #F9F9F9;
@@ -22,6 +21,7 @@
 	font-size: 14px;
 	line-height: 18px;
 	color: #A0A0A0;
+	margin-right: 10px;
 }
 
 .search-form__button{
@@ -53,9 +53,6 @@
 		width: 92%;
 		margin: 80px auto 41px;
 	}
-	.search-form__input{
-		width: 634px;
-	}
 	.search-form__line{
 		margin: 99px auto 10px;
 		width: 92%;
@@ -68,7 +65,7 @@
 		margin: 80px auto 47px;
 	}
 	.search-form__input{
-		width: 218px;
+		width: 81%;
 	}
 	.search-form__line{
 		margin: 105px auto 10px;

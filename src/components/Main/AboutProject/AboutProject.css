@@ -4,17 +4,17 @@
 }
 
 .about-project__subtitle{
-	/* width: 600px; */
 	margin: 110px auto 23px 70px;
 }
 
 .about-project__block{
 	display: flex;
-	justify-content: flex-start;
+	justify-content: space-between;
 }
 
 .about-project__blocks{
 	margin: 70px 0 110px;
+	width: 48%;
 }
 
 .about-project__subtitle_block{
@@ -73,7 +73,6 @@
 	}
 	.about-project__blocks{
 		margin: 70px 0 93px;
-		margin-right: 30px;
 	}
 	.about-project__blocks:last-of-type{
 		margin-right: 0;
@@ -98,6 +97,7 @@
 	}
 	.about-project__blocks{
 		margin: 60px auto;
+		width: 100%;
 	}
 	.about-project__blocks:last-of-type{
 		margin: 0 auto 60px;

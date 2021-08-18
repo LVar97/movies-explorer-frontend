@@ -15,12 +15,11 @@
 
 .about-me__blocks{
 	margin-top: 66px;
-}
+} 
 
-.about-me__blocks_text{
+ .about-me__blocks_text{
 	width: 47%;
 	text-align: left;
-	margin-right: 49px;
 }
 
 .about-me__blocks_photo{
@@ -74,7 +73,6 @@
 	}
 	.about-me__blocks_text{
 		width: 46%;
-		margin-right: auto;
 	}
 	.about-me__blocks_photo{
 		width: 255px;
@@ -91,8 +89,12 @@
 		margin-bottom: 87px;
 	}
 }
-
-@media screen and (max-width: 435px){
+@media screen and (max-width: 480px){
+	.about-me__blocks_text{
+		margin-right: 10px;
+	}
+}
+@media screen and (max-width: 470px){
 	.about-me__subtitle{
 		margin: 70px 18px 28px;
 	}
