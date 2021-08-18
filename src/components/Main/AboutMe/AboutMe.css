@@ -73,6 +73,7 @@
 	}
 	.about-me__blocks_text{
 		width: 46%;
+		margin-right: 10px;
 	}
 	.about-me__blocks_photo{
 		width: 255px;
