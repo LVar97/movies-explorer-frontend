@@ -7,8 +7,8 @@
 }
 
 .switch-container {
-	position: fixed;
-	top: 232px; 
+	position: absolute;
+	top: 78px; 
 	left: 50%;
 	-webkit-transform: translate3d( -50%, -50%, 0 );
 	transform: translate3d( -50%, -50%, 0 );
@@ -105,7 +105,7 @@
 
 @media screen and (max-width: 770px){
 	.switch-container {
-		top: 260px;
+		top: 90px;
 		margin-top: 0; 
 	}
 }
@@ -114,8 +114,6 @@
 		font-size: 11px;
 	}
 	.switch-container {
-		top: 265px; 
-		margin-top: 0;
 		width: 148px;
 	}
 }

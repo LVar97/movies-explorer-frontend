@@ -1,5 +1,5 @@
 .promo{
-	width: 90%;
+	max-width: 94%;
 	margin: 20px auto 0;
 	background: #F5F5F5;
 	border-radius: 10px;
@@ -10,17 +10,17 @@
 }
 
 .promo__title{
-	width: 730px;
+	max-width: 730px;
 	text-align: center;
 	margin: 160px auto 151px;
 }
 
 @media screen and (max-width: 770px){
 	.promo{
-		width: 95%;
+		max-width: 95%;
 	}
 	.promo__title{
-		width: 680px;
+		max-width: 680px;
 		text-align: center;
 		margin: 350px auto 314px;
 	}
@@ -31,7 +31,7 @@
 		margin: 14px auto 0;
 	}
 	.promo__title{
-		width: 292px;
+		max-width: 292px;
 		text-align: center;
 		margin: 220px auto 212px;
 	}

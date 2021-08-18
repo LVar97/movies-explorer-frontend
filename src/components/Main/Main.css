@@ -1,5 +1,6 @@
 .content{
 	color: #000000;
+	margin: 0 auto;
 }
 
 .title{
@@ -23,7 +24,7 @@
 }
 
 .block{
-	width: 90%;
+	width: 89%;
 	border-top: 1px solid #000000;
 	margin: 0 auto;
 }

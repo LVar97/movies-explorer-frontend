@@ -1,5 +1,6 @@
 .search-form{
 	width: 100%;
+	position: relative;
 }
 
 .search-form__container{
@@ -72,5 +73,6 @@
 	.search-form__line{
 		margin: 105px auto 10px;
 		width: 91%;
+		height: 44px;
 	}
 }

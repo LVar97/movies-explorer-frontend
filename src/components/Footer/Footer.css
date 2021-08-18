@@ -8,6 +8,7 @@
 }
 
 .footer__heading{
+	width: 320px;
 	margin: 79px auto 20px;
 	font-weight: 400;
 	font-size: 13px;
@@ -17,11 +18,13 @@
 }
 
 .footer__sections{
+	width: 89%;
 	border-top: 1px solid #E8E8E8;
 	display: grid;
-	grid-template-columns: 857px 120px 42px 61px;
+	grid-template-columns: 1fr 120px 42px 61px;
 	grid-column-gap: 20px;
 	padding-top: 20px;
+	margin: 0 auto;
 	margin-bottom: 20px;
 }
 
@@ -48,7 +51,7 @@
 
 @media screen and (max-width: 770px){
 	.footer__sections{
-		grid-template-columns: 425px 120px 42px 61px;
+		width: 92%;
 	}
 }
 
@@ -58,7 +61,8 @@
 		line-height: 15px;
 	}
 	.footer__sections{
-		grid-template-columns: 300px;
+		width: 94%;
+		grid-template-columns: 1fr;
 		grid-template-rows: repeat(3, 15px);
 		justify-items: center;
 		grid-row-gap: 12px;

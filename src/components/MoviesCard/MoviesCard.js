@@ -9,7 +9,8 @@ function MoviesCard(props){
 				<p className="movies-card__duration">27 минут</p>
       </div>
 			<img className="movies-card__cover" src={card} alt="Обложка фильма"/>
-			<button className="movies-card__btn-save">{props.name}</button>
+			{/* <button className="movies-card__btn-save">{props.name}</button> */}
+			{props.children}
     </li>
 	);
 }

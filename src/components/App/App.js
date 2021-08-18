@@ -23,7 +23,7 @@ function App() {
   function handleBurgerClick () {
     setIsBurgerOpen(true);
   }
-
+  
   function closeBurger () {
     setIsBurgerOpen(false);
   }

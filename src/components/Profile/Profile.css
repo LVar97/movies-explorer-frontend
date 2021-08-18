@@ -27,22 +27,22 @@
 .profile__label{
 	border-bottom: 1px solid #E8E8E8;
 	padding-bottom: 14px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .profile__label:last-of-type{
 	border-bottom: none;
 	margin-bottom: 220px;
+	margin-top: 17px;
 }
 
 .profile__input{
 	border: none;
-	margin-left: 170px;
 	text-align: right;
+	max-width: 122px;
 }
 
-.profile__input_email{
-	margin-top: 17px;
-}
 
 .profile__btn{
 	width: 32%;
@@ -76,11 +76,11 @@
 	.profile__label{
 		padding-bottom: 17px;
 	}
-	.profile__input{
-		margin-left: 147px;
-	}
 	.profile__label:last-of-type{
 		margin-bottom: 210px;
+	}
+	.profile__btn{
+		width: 53%;
 	}
 }
 
