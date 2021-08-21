@@ -1,0 +1,134 @@
+.about-project{
+	width: 100%;
+	margin-bottom: 110px;
+}
+
+.about-project__subtitle{
+	margin: 110px auto 23px 70px;
+}
+
+.about-project__block{
+	display: flex;
+	justify-content: space-between;
+}
+
+.about-project__blocks{
+	margin: 70px 0 110px;
+	width: 48%;
+}
+
+.about-project__subtitle_block{
+	margin: 0;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.about-project__description{
+	margin: 26px 0 0;
+}
+
+.about-project__scale{
+	width: 90%;
+	margin: 0 auto;
+	display: grid;
+	row-gap: 14px;
+  grid-template-columns: 20% 80%;
+	grid-template-rows: 36px 17px;
+}
+
+.about-project__figure{
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;
+	margin: 0;
+	padding-top: 9px;
+}
+
+.about-project__figure_backend{
+	background: #000000;
+	color: #FFFFFF;
+}
+
+.about-project__figure_frontent{
+	background: #F2F2F2;
+	color: #000000;
+}
+
+.about-project__figcaption{
+	text-align: center;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	color: #A0A0A0;
+}
+
+@media screen and (max-width: 770px){
+	.about-project{
+		margin-bottom: 90px;
+	}
+	.about-project__subtitle{
+		margin: 90px auto 23px 50px;
+	}
+	.about-project__blocks{
+		margin: 70px 0 93px;
+	}
+	.about-project__blocks:last-of-type{
+		margin-right: 0;
+	}
+	.about-project__subtitle_block{
+		margin: 0;
+	}
+	.about-project__description{
+		margin: 22px 0 0;
+	}
+	.about-project__figcaption{
+		font-weight: 400;
+	}
+}
+
+@media screen and (max-width: 425px){
+	.about-project{
+		margin-bottom: 70px;
+	}
+	.about-project__subtitle{
+		margin: 70px 18px 28px;
+	}
+	.about-project__blocks{
+		margin: 60px auto;
+		width: 100%;
+	}
+	.about-project__blocks:last-of-type{
+		margin: 0 auto 60px;
+	}
+	.about-project__subtitle_block{
+		margin: 0;
+	}
+	.about-project__block{
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+	.about-project__description{
+		margin: 18px 0 0;
+	}
+	.about-project__scale{
+		width: 90%;
+		margin: 0 auto;
+		display: grid;
+		row-gap: 10px;
+		grid-template-columns: 35% 65%;
+		grid-template-rows: 35px 13px;
+	}
+	.about-project__figure{
+		font-size: 11px;
+		line-height: 13px;
+		padding-top: 11px;
+	}
+	.about-project__figcaption{
+		font-weight: 400;
+		font-size: 11px;
+		line-height: 13px;
+	}
+}
