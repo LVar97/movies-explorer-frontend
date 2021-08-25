@@ -1,9 +1,18 @@
+import React, { useContext } from 'react';
 import './Profile.css';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import { NavLink } from 'react-router-dom';
+import {CurrentUserContext} from '../../context/CurrentUserContext';
 
-function Profile({isLogged, isMobile, handleBurgerClick}){
+function Profile({isLogged, isMobile, handleBurgerClick, onEditProfile}){
+	const { name, email } = useContext(CurrentUserContext);
+
+	const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onEditProfile({ name, email});
+  };
+
 	return(
 		<section className="profile">
 			<Header>
@@ -14,7 +23,7 @@ function Profile({isLogged, isMobile, handleBurgerClick}){
 				<div className={`menu__burger ${isMobile && isLogged ? 'menu__burger_active' : ''}`} onClick={handleBurgerClick}></div>
 			</Header>
 			<h1 className="profile__hello-title hello-title">Привет, Варвара!</h1>
-			<form className="profile__form">
+			<form className="profile__form"  onSubmit={handleSubmit}>
 				<label className="profile__label">Имя
 					<input type="text" className="profile__input profile__input_name" required maxLength="30" minLength="2"/>
 				</label>

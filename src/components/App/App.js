@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, {useState, useEffect } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import Main from "../Main/Main";
 import Movies from '../Movies/Movies';
@@ -8,17 +8,19 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import NotFound from '../NotFound/NotFound';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
+import ProtectedRoute from '../../utils/ProtectedRoute';
+import { mainApi } from '../../utils/MainApi';
 
 function App() {
-  const [isScreenAccess, setIsScreenAccess] = React.useState(true);
-  const [isLogged, setIsLogged] = React.useState(true);
-  const [isScreenLogin, setIsScreenLogin] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(false);
-  const [isBurgerOpen, setIsBurgerOpen] = React.useState(false);
+  const history = useHistory();
+  const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
-  function openLogin(){
-    isScreenLogin(true);
-  }
+
 
   function handleBurgerClick () {
     setIsBurgerOpen(true);
@@ -40,46 +42,130 @@ function App() {
     }
   }
 
+  const checkToken = () => {
+    // если у пользователя есть токен в localStorage, 
+    // эта функция проверит, действующий он или нет
+    const jwt = localStorage.getItem('jwt');
+    if (jwt){
+      // проверим токен
+      mainApi
+      .getUserInfo()
+      .then((userData) => {
+        setCurrentUser(userData);
+        // авторизуем пользователя
+        setLoggedIn(true);
+        // history.push('/');
+      })
+      .catch((err) => console.log(err));
+    }
+  };
+
+  const handleLogin = (data) => {
+    mainApi
+    .authorize(data.email, data.password)
+    .then((data) => {
+      setLoggedIn(true);
+      // history.push('/');
+      // checkToken(data.token);
+    })
+    .catch((err) => console.log(err));
+  };
+
+  const handleRegister = ({name, email, password}) =>{
+    mainApi
+    .register(name, email, password)
+    .then(() => handleLogin({ email, password }))
+    .catch((err) => console.log(err));
+  }
+
+  // const getUserContent = () => {
+  //   mainApi
+  //   .getUserInfo()
+  //   .then((userData) => {
+  //     setCurrentUser(userData);
+  //     setLoggedIn(true);
+  //   })
+  //   .catch((err) => console.log(err));
+  // };
+
+  const handleUpdateUser = (data) => {
+    mainApi
+    .updateUserInfo(data)
+    .then((res) =>  setCurrentUser(res))
+    .catch((err) => console.log(err));
+  }
+
+  const deleteMovie = ({ id, movie }) => {
+    mainApi
+    .deleteMovie(id)
+    .then(() => {})
+    .catch((err) => console.log(err));
+  };
+
+  const saveMovie = (data) => {
+    mainApi
+      .saveMovie(data)
+      .then((movie) => {})
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    checkToken();
+  }, []);
+
   return (
     <div className="page">
-      <Switch >
+      <CurrentUserContext.Provider value={currentUser}>
+        <Switch >
         <Route exact path="/">
-          <Main isLogged={isLogged}
+          <Main isLogged={loggedIn}
           isMobile={isMobile}
           handleBurgerClick={handleBurgerClick}/>
         </Route>
-        <Route path="/movies">
-          <Movies isLogged={isLogged}
+        <ProtectedRoute
+          path="/movies"
+          component={Movies}
+          isLogged={loggedIn}
           isMobile={isMobile}
-          handleBurgerClick={handleBurgerClick}/>
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies isLogged={isLogged}
+          handleBurgerClick={handleBurgerClick}
+        />
+        <ProtectedRoute
+          path="/saved-movies"
+          component={SavedMovies}
+          isLogged={loggedIn}
           isMobile={isMobile}
-          handleBurgerClick={handleBurgerClick}/>
-        </Route>
-        <Route path="/profile">
-          <Profile isLogged={isLogged}
+          handleBurgerClick={handleBurgerClick}
+        />
+        <ProtectedRoute
+          path="/profile"
+          component={Profile}
+          isLogged={loggedIn}
           isMobile={isMobile}
-          handleBurgerClick={handleBurgerClick}/>
-        </Route>
+          handleBurgerClick={handleBurgerClick}
+          onEditProfile={handleUpdateUser}
+        />
         <Route path="/signin">
-          <Login 
-          isScreenLogin={openLogin}
-          isScreenAccess={isScreenAccess}/>
+          <Login
+          onLogin={handleLogin}/>
         </Route>
         <Route path="/signup">
           <Register
-          name='Имя'
-          isScreenAccess={isScreenAccess}
+          setemail
+          label='Имя'
+          onRegister={handleRegister}
           />
         </Route>
+
+        <Route path='*'>
+          <NotFound />
+        </Route>
+
       </Switch>
+      </CurrentUserContext.Provider>
       <BurgerMenu
         isMobile={isMobile}
         isOpened={isBurgerOpen}
         onClose={closeBurger} />
-      {/* <NotFound/> */}
     </div>
   );
 }

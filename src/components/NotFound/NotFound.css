@@ -1,5 +1,5 @@
 .error{
-	width: 1280px;
+	width: 100%;
 	margin: 0 auto;
 	font-family: 'Inter', sans-serif;
 	font-style: normal;
@@ -38,18 +38,13 @@
 }
 
 @media screen and (max-width: 770px){
-	.error{
-		width: 768px;
-	}
 	.error__content{
-		margin: 408px auto 184px;
+		margin: 308px auto 184px;
 	}
 }
 
 @media screen and (max-width: 425px){
-	.error{
-		width: 320px;
-	}
+	
 	.error__content{
 		width: 300px;
 		margin: 329px auto 284px;

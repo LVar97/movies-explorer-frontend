@@ -1,6 +1,7 @@
 import FormScreen from "../FormScreen/FormScreen";
 
-function Login(props){
+function Login({isScreenAccess, onLogin, ...props}){
+	
 	return(
 		<FormScreen
 		title='Рады видеть!'
@@ -8,10 +9,15 @@ function Login(props){
 		link='signup'
 		caption='Ещё не зарегистрированы?'
 		linkName='Регистрация'
-		isLogin={props.isScreenLogin}
-		isScreenAccess={props.isScreenAccess}
+		isScreenLogin={true}
+		isScreenAccess={isScreenAccess}
+		handleSubmit={onLogin}
 		/>
 	);
+}
+
+Login.defaultProps = {
+  isScreenLogin: false
 }
 
 export default Login;
