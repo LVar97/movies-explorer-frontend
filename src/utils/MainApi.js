@@ -90,8 +90,11 @@ export default class MainApi{
 		})
 		.then(this._handleResponse)
 		.then((data) => {
-			if (data.token){
+			console.log(data)
+			if (data){
+				console.log(data)
 				localStorage.setItem('jwt', data.token);
+				console.log('jwt', data.token)
 				return data;
 			}
 		})

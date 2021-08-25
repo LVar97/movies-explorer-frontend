@@ -61,9 +61,18 @@
 	margin-bottom: 16px;
 }
 
+.profile__btn_submit:hover{
+	cursor: pointer;
+	opacity: .8;
+}
+
 .profile__btn_exit{
 	color: #FF4062;
-	
+}
+
+.profile__btn_exit:hover{
+	cursor: pointer;
+	opacity: .8;
 }
 
 @media screen and (max-width: 770px){

@@ -12,6 +12,7 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 
 function Main({isLogged, isMobile, handleBurgerClick, ...props}){
+	console.log(isLogged)
 	return(
 		<>
 			<Header>

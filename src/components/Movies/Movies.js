@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import Preloader from '../Preloader/Preloader';
 
 function Movies({isLogged, isMobile, handleBurgerClick}){
+	console.log(isLogged)
 	return(
 		<>
 			<Header>

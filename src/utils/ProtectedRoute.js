@@ -4,10 +4,10 @@ import { Route, Redirect } from 'react-router-dom';
 const ProtectedRoute = ({ component: Component, ...props }) => (
   <Route>
     {() =>
-      props.loggedIn ? (
+      props.isLogged ? (
         <Component {...props} />
       ) : (
-        <Redirect exact to='/' />
+        <Redirect to='/' />
       )
     }
   </Route>

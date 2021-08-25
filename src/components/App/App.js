@@ -1,5 +1,5 @@
-import React, {useState, useEffect } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import React, {useState } from 'react';
+import { Route, Switch, useHistory, withRouter } from 'react-router-dom';
 import './App.css';
 import Main from "../Main/Main";
 import Movies from '../Movies/Movies';
@@ -32,6 +32,7 @@ function App() {
 
   React.useEffect(() => {
     window.addEventListener('resize', handleWindowSize);
+    checkToken();
   }, []);
 
   const handleWindowSize = () => {
@@ -46,6 +47,7 @@ function App() {
     // если у пользователя есть токен в localStorage, 
     // эта функция проверит, действующий он или нет
     const jwt = localStorage.getItem('jwt');
+    console.log(jwt)
     if (jwt){
       // проверим токен
       mainApi
@@ -54,7 +56,7 @@ function App() {
         setCurrentUser(userData);
         // авторизуем пользователя
         setLoggedIn(true);
-        // history.push('/');
+        history.push('/');
       })
       .catch((err) => console.log(err));
     }
@@ -65,8 +67,8 @@ function App() {
     .authorize(data.email, data.password)
     .then((data) => {
       setLoggedIn(true);
-      // history.push('/');
-      // checkToken(data.token);
+      history.push('/');
+      checkToken(data.token);
     })
     .catch((err) => console.log(err));
   };
@@ -74,19 +76,15 @@ function App() {
   const handleRegister = ({name, email, password}) =>{
     mainApi
     .register(name, email, password)
-    .then(() => handleLogin({ email, password }))
+    .then(() => history.push('/signin'))
     .catch((err) => console.log(err));
   }
 
-  // const getUserContent = () => {
-  //   mainApi
-  //   .getUserInfo()
-  //   .then((userData) => {
-  //     setCurrentUser(userData);
-  //     setLoggedIn(true);
-  //   })
-  //   .catch((err) => console.log(err));
-  // };
+  const handleSignOut = () => {
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    history.push('/');
+  }
 
   const handleUpdateUser = (data) => {
     mainApi
@@ -95,23 +93,23 @@ function App() {
     .catch((err) => console.log(err));
   }
 
-  const deleteMovie = ({ id, movie }) => {
-    mainApi
-    .deleteMovie(id)
-    .then(() => {})
-    .catch((err) => console.log(err));
-  };
+  // const deleteMovie = ({ id, movie }) => {
+  //   mainApi
+  //   .deleteMovie(id)
+  //   .then(() => {})
+  //   .catch((err) => console.log(err));
+  // };
 
-  const saveMovie = (data) => {
-    mainApi
-      .saveMovie(data)
-      .then((movie) => {})
-      .catch((err) => console.log(err));
-  };
+  // const saveMovie = (data) => {
+  //   mainApi
+  //     .saveMovie(data)
+  //     .then((movie) => {})
+  //     .catch((err) => console.log(err));
+  // };
 
-  useEffect(() => {
-    checkToken();
-  }, []);
+  // useEffect(() => {
+  //   checkToken();
+  // }, []);
 
   return (
     <div className="page">
@@ -141,8 +139,9 @@ function App() {
           component={Profile}
           isLogged={loggedIn}
           isMobile={isMobile}
-          handleBurgerClick={handleBurgerClick}
+          onSignOut={handleSignOut}
           onEditProfile={handleUpdateUser}
+          handleBurgerClick={handleBurgerClick}
         />
         <Route path="/signin">
           <Login
@@ -170,4 +169,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
