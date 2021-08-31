@@ -1,70 +1,97 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './FormScreen.css';
 import Header from '../Header/Header';
-import { Link } from 'react-router-dom';
 
-function FormScreen({name, isScreenLogin, isScreenAccess, ...props}) {
-  const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-  
-  function handleChangeEmail(e) {
-    setEmail(e.target.value)
-  }
+import useFormWithValidation from '../../utils/useFormValidation';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-  function handleChangePassword(e){
-    setPassword(e.target.value)
-  }
+function FormScreen({
+  isScreenLogin, isScreenAccess, errorText,
+  clearErrors, ...props
+}) {
 
-  function handleSubmit(e)  {
+  const {
+    values, handleChange, errors, isValid,
+  } = useFormWithValidation();
+
+  function handleSubmit(e) {
     e.preventDefault();
     // Передаём значения управляемых компонентов во внешний обработчик
-    props.handleSubmit({name,email,password})
+    props.handleSubmit(values);
   }
+
+  React.useEffect(() => clearErrors(), []);
 
   return (
     <section className='form'>
         <Header isScreenAccess={true}/>
-				<form
+        <form
         className='form__container'
         onSubmit={handleSubmit}
         noValidate>
         <h1 className='form__title'>{props.title}</h1>
-        <div className='form__inputs'>
-					{props.children}
+        <div className={`form__inputs ${isScreenLogin && 'form__inputs_login'}`}>
+          {!isScreenLogin && (
+            <>
+              <label className='form__label'>Имя</label>
+              <input
+              name='name'
+              className='form__input'
+              type='text'
+              required
+              maxLength="30"
+              minLength="2"
+              value={values.name || ''}
+              onChange={handleChange}
+              />
+              <span className='form__error-message'>{errors.name}</span>
+            </>
+          )}
           <label className='form__label'>E-mail</label>
           <input
+          name='email'
           className='form__input'
-          type='text'
+          type='email'
           required
           maxLength="30"
           minLength="5"
-          value={email}
-          onChange={handleChangeEmail}/>
-          <span className='form__error-message'>Что-то пошло не так...</span>
+          value={values.email || ''}
+          onChange={handleChange}
+          />
+          <span className='form__error-message'>{errors.email}</span>
           <label className='form__label'>Пароль</label>
           <input
+          name='password'
           className='form__input'
           type='password'
           required
           maxLength="30"
           minLength="8"
-          value={password}
-          onChange={handleChangePassword}/>
-          <span className='form__error-message'>Что-то пошло не так...</span>
+          value={values.password || ''}
+          onChange={handleChange}
+          />
+          <span className='form__error-message'>{errors.password}</span>
         </div>
-        <button className={`form__access-button ${isScreenLogin && 'form__access-button_login'}`} type='submit'>{props.buttonName}</button>
+        <ErrorMessage errorText={errorText} className='message-error_auth-form'/>
+        <button
+        className={`form__access-button ${isValid && 'form__access-button_active'}`}
+        type='submit'
+        disabled={!isValid}
+        >{props.buttonName}</button>
         <p className='form__caption'>{props.caption}
-					<Link 
-					className='form__link'
-					to={props.link}>{props.linkName}
-					</Link>
-				</p>
+        <Link
+        className='form__link'
+        to={props.link}>{props.linkName}
+        </Link>
+      </p>
       </form>
     </section>
   );
 }
 
 FormScreen.defaultProps = {
-  isScreenAccess: false
-}
+  isScreenAccess: false,
+};
+
 export default FormScreen;

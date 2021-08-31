@@ -1,15 +1,23 @@
+import { CurrentUserContext } from "../context/CurrentUserContext";
+
 export default class MainApi{
 	constructor(options){
 		this._url = options.baseUrl;
 		this._token = options.token;
 	}
 
-	_handleResponse(res) {
-		if (!res.ok) {
-			return Promise.reject(`Error: ${res.status}`);
-		}
-		return res.json();
-	}
+	// _handleResponse(res) {
+	// 	if (!res.ok) {
+	// 		return Promise.reject(`Error: ${res.message}`);
+	// 	}
+	// 	return res.json();
+	// }
+  _handleResponse(res) {
+    return res.ok
+      ? res.json()
+      : res.json().then((err) => Promise.reject(err.message)); 
+  }
+
 
 	getUserInfo(){
 
@@ -32,12 +40,13 @@ export default class MainApi{
 				'Content-Type': 'application/json'
 			},
 			body:JSON.stringify(data)
-			
+
 		})
 		.then(this._handleResponse)
 	}
 
 	saveMovie(data){
+		console.log(JSON.stringify(data))
 		return fetch(`${this._url}movies`, {
       method: 'POST',
       headers: {
@@ -63,20 +72,18 @@ export default class MainApi{
 		return fetch(`${this._url}movies`, {
       method: 'GET',
       headers: {
-        Authorization: this.token,
+        Authorization: this._token,
       },
     })
     .then(this._handleResponse);
 	}
 
 	// changeSaveMovieStatus(movie, isSave) {
-		
 	// 	if (isSave === true){
-	// 		return api.saveMovie(movie)
+	// 		return mainApi.saveMovie(movie)
 	// 	}else{
-	// 		return api.deleteMovie(movie)
+	// 		return mainApi.deleteMovie(movie)
 	// 	}
-
 	// }
 
 	authorize(email, password){
@@ -92,25 +99,25 @@ export default class MainApi{
 		.then((data) => {
 			console.log(data)
 			if (data){
-				console.log(data)
+				// console.log(data)
 				localStorage.setItem('jwt', data.token);
-				console.log('jwt', data.token)
+				// console.log('jwt', data.token)
 				return data;
 			}
 		})
-	}; 
+	};
 
 	register( name, email, password ){
 		return fetch(`${this._url}signup`, {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
-				'Content-Type': 'application/json', 
+				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({ name, email, password })
 		})
 		.then(this._handleResponse)
-	}; 
+	};
 }
 
 export const mainApi = new MainApi({

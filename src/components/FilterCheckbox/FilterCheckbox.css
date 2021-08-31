@@ -30,7 +30,8 @@
 	width: 40px;
 	height: 20px;
 	border-radius: 999px;
-	background-color: #2BE080;
+	/* background-color: #2BE080; */
+	background-color: #EBEBEB; 
 	-webkit-transition-duration: .4s;
 	transition-duration: .4s;
 	-webkit-transition-property: background-color, box-shadow;
@@ -55,7 +56,8 @@
 .switch:checked + div {
 	width: 36px;
 	background-position: 0 0;
-	background-color: #2BE080;
+	/* background-color: #2BE080; */
+	background-color: #EBEBEB; 
 }
 
 .switch + div {
@@ -65,7 +67,8 @@
 
 
 .switch:checked + div {
-	background-color: #EBEBEB;
+	/* background-color: #EBEBEB; */
+	background-color: #2BE080;
 }
 
 .switch + div > div {

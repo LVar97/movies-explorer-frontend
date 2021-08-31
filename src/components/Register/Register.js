@@ -1,18 +1,24 @@
-import React, {useState} from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router';
 import FormScreen from "../FormScreen/FormScreen";
 import '../FormScreen/FormScreen.css';
 
+
 function Register({
-	label,
 	isScreenAccess,
 	onRegister,
-	...props}){
+	isLogged,
+	isLoading,
+	errorText,
+  clearErrors}){
 
+    const history = useHistory();
 
-	const [name, setName] = useState('');
-	function handleChangeName(e){
-    setName(e.target.value)
-  }
+    useEffect(() => {
+      if (isLogged) {
+        history.push('/movies');
+      }
+    }, [isLogged]);
 
 	return(
 		<FormScreen
@@ -22,20 +28,11 @@ function Register({
 		caption='Уже зарегистрированы?'
 		linkName='Войти'
 		isScreenAccess={isScreenAccess}
-		name={name}
-		onChange={props.onChange}
-		handleSubmit={onRegister}>
-			<label className='form__label'>{label}</label>
-			<input
-			className='form__input'
-			type='text'
-			required
-			maxLength="30"
-			minLength="2"
-			value={name}
-			onChange={handleChangeName}
-			/>
-			<span className='form__error-message'>Что-то пошло не так...</span>
+		handleSubmit={onRegister}
+		isLoading={isLoading}
+
+		errorText={errorText}
+    clearErrors={clearErrors}>
 		</FormScreen>
 	);
 }
