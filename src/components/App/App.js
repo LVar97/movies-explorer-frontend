@@ -76,9 +76,9 @@ function App() {
     if (jwt){
       setLoggedIn(true);
       // проверим токен
-      getUser();
-      getSavedMovies();
-      getContentMovies();
+        getUser();
+        getSavedMovies();
+        getContentMovies();
       history.push('/movies');
     }
   };
@@ -103,6 +103,7 @@ function App() {
       .authorize(data.email, data.password)
       .then((res) => {
         localStorage.setItem('jwt', res.token);
+        setLoggedIn(true);
         checkToken(res.token);
       })
       .catch((err) => setServerMessage(err))
@@ -208,7 +209,7 @@ function App() {
   };
 
 
-  const getSavedMovies = (check) => {
+  const getSavedMovies = () => {
     mainApi
       .getSavedMovies()
       .then((res) => {
@@ -246,8 +247,7 @@ function App() {
 
   React.useEffect(() => {
     checkToken();
-    localStorage.getItem('savedquery', '')
-    getContentMovies();
+    localStorage.getItem('savedquery', '');
   }, []);
 
 

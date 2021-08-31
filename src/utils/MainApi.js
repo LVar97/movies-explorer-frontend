@@ -6,24 +6,18 @@ export default class MainApi{
 		this._token = options.token;
 	}
 
-	// _handleResponse(res) {
-	// 	if (!res.ok) {
-	// 		return Promise.reject(`Error: ${res.message}`);
-	// 	}
-	// 	return res.json();
-	// }
   _handleResponse(res) {
     return res.ok
       ? res.json()
-      : res.json().then((err) => Promise.reject(err.message)); 
+      : res.json().then((err) => Promise.reject(err.message));
   }
 
 
 	getUserInfo(){
-
+    // console.log(localStorage.getItem('jwt'))
 		return fetch(`${this._url}users/me`, {
 		headers: {
-			authorization: this._token
+			authorization: 'Bearer ' + localStorage.getItem('jwt')
 		}
 		})
 		.then(this._handleResponse)
@@ -72,19 +66,11 @@ export default class MainApi{
 		return fetch(`${this._url}movies`, {
       method: 'GET',
       headers: {
-        Authorization: this._token,
+        Authorization: 'Bearer ' + localStorage.getItem('jwt'),
       },
     })
     .then(this._handleResponse);
 	}
-
-	// changeSaveMovieStatus(movie, isSave) {
-	// 	if (isSave === true){
-	// 		return mainApi.saveMovie(movie)
-	// 	}else{
-	// 		return mainApi.deleteMovie(movie)
-	// 	}
-	// }
 
 	authorize(email, password){
 		return fetch(`${this._url}signin`, {
@@ -97,7 +83,6 @@ export default class MainApi{
 		})
 		.then(this._handleResponse)
 		.then((data) => {
-			console.log(data)
 			if (data){
 				// console.log(data)
 				localStorage.setItem('jwt', data.token);

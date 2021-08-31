@@ -10,7 +10,7 @@ import Preloader from '../Preloader/Preloader';
 
 function Profile({
   isLogged, isMobile, handleBurgerClick, onEditProfile, onSignOut, isLoading, serverMessage,
-  clearErrors
+  clearErrors,
 }) {
 
   const {

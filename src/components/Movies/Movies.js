@@ -27,7 +27,6 @@ function Movies({
 
   const [filteredMovies,setFilteredMovies] = React.useState([]);
   const [shortFilm,setShortFilm] = React.useState(false);
-console.log(chosenMovies)
 
   React.useEffect(() => {
     filter();
@@ -40,18 +39,15 @@ console.log(chosenMovies)
     && localStorage.getItem('savedquery') === ''){
       return []
     }else {
-      console.log(checkFavourite(movies, chosenMovies));
       return setFilteredMovies(onSearch(localStorage.getItem('savedquery'), movies))
     }
   }
 
 
   function checkFavourite(array1, array2){
-    console.log(array1, array2)
     array1.forEach((el) => {
       array2.forEach((film) => {
         if(el.movieId === film.movieId){
-          console.log(el)
           return el.isFavorite = true;
         }
       })
