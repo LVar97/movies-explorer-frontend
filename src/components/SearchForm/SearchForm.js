@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { errorMessage } from '../../utils/constants';
+import { ERROR_MESSAGE } from '../../utils/constants';
 
 function SearchForm({
   onSearch, onFilterShort, isCheked,
@@ -37,7 +37,7 @@ function SearchForm({
         value={film || ''}/>
         <button className='search-form__button' type='submit' />
       </form>
-      <ErrorMessage errorText={isSearchEmpty ? errorMessage.emptyError : ''} className='message-error_search'/>
+      <ErrorMessage errorText={isSearchEmpty ? ERROR_MESSAGE.emptyError : ''} className='message-error_search'/>
       <FilterCheckbox isCheked={isCheked} onFilterShort={onFilterShort} />
       <div className="search-form__line"/>
     </section>
