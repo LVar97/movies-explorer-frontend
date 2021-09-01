@@ -43,7 +43,7 @@ function App() {
     setIsGeneralServerError(false);
     setServerMessage('');
   }
-
+  console.log(loggedIn)
   function openPopup() {
     setIsPopupOpen(true);
   }
@@ -90,7 +90,6 @@ function App() {
         setCurrentUser(userData);
       // авторизуем пользователя
         setLoggedIn(true);
-        history.push('/movies');
       })
       .catch((err) => {
         setServerMessage(err);

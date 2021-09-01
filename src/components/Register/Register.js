@@ -18,7 +18,7 @@ function Register({
       if (isLogged) {
         history.push('/movies');
       }
-    }, [isLogged]);
+    }, [history, isLogged]);
 
 	return(
 		<FormScreen

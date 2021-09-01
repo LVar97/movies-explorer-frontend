@@ -60,11 +60,6 @@ function MoviesCardList({
       setRenderMovies(renderAllMovies.slice(0, count))
       setCurrenCount(count)
     }
-    // else{
-    //   return(
-    //     <ErrorMessage errorText='вы еще не искали фильмы' className='message-help'/>
-    //   )
-    // }
 
   }, [renderAllMovies])
 
@@ -73,6 +68,33 @@ function MoviesCardList({
   }
 
   function renderMoreButton(){
+
+    if(!isSavedMoviesPage && renderAllMovies === undefined){
+      return (
+        <button
+        className='movies-list__btn-more_hidden'
+        type='button'
+        onClick={handleMoreCards}>Ещё</button>
+      )
+    }
+
+    if(!isSavedMoviesPage && renderAllMovies.length === 0){
+      return (
+        <button
+        className='movies-list__btn-more_hidden'
+        type='button'
+        onClick={handleMoreCards}>Ещё</button>
+      )
+    }
+
+    if(!isSavedMoviesPage && renderMovies.length === renderAllMovies.length){
+      return (
+        <button
+        className='movies-list__btn-more_hidden'
+        type='button'
+        onClick={handleMoreCards}>Ещё</button>
+      )
+    }
 
     if(!isSavedMoviesPage && renderMovies.length > 0){
       return (
@@ -98,7 +120,10 @@ function MoviesCardList({
 
     if(isSavedMoviesPage && renderMovies.length === 0){
       return(
-        <ErrorMessage errorText='Сохраненных фильмов пока нет' className='message-help'/>
+        <>
+         <ErrorMessage errorText='' className='message-help'/>
+         <ErrorMessage errorText='Сохраненных фильмов пока нет' className='message-help'/>
+       </>
       )
     }
 
@@ -111,13 +136,30 @@ function MoviesCardList({
       )
     }
 
+    // if(!isSavedMoviesPage && renderAllMovies.length === 0 && renderAllMovies.length !== 0){
+    //   console.log('условте работает')
+    //   return(
+    //     <>
+    //     <ErrorMessage errorText='' className='message-help'/>
+    //     <ErrorMessage errorText='Фильмы не найдены' className='message-help'/>
+    //     </>
+    //   )
+    // }
+
+    return(
+      <>
+      <ErrorMessage errorText='' className='message-help'/>
+      <ErrorMessage errorText='Фильмы не найдены' className='message-help'/>
+      </>
+    )
+
   }
 
   return (
     <section className="movies-list">
       <ul className="movies-list__cards">
-      {renderAllMovies !== undefined ?
-      ( renderMovies.map((movie) => (
+      {renderAllMovies !== undefined && renderAllMovies.length !== 0 ?
+       (renderMovies.map((movie) => (
           <MoviesCard
           name={name}
           key={movie.movieId}
@@ -128,7 +170,7 @@ function MoviesCardList({
           savedMovies={savedMovies}
           />))) : renderStart()}
       </ul>
-      {isSavedMoviesPage ? renderStart() : ''}
+      {/* {isSavedMoviesPage && renderStart()} */}
       {renderMoreButton()}
     </section>
   );

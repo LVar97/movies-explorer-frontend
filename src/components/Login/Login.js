@@ -7,7 +7,9 @@ function Login({isScreenAccess, onLogin, isLoading, isLogged, errorText, clearEr
 	const history = useHistory();
 
   useEffect(() => {
-    if (isLogged) history.push('/movies');
+    if (isLogged) {
+      history.push('/movies');
+    }
   }, [history, isLogged]);
 
 
