@@ -11,7 +11,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 
-function Main({isLogged, isMobile, handleBurgerClick}){
+function Main({isLogged, isMobile, handleBurgerClick, ...props}){
 	return(
 		<>
 			<Header>

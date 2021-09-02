@@ -1,7 +1,25 @@
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router';
 import FormScreen from "../FormScreen/FormScreen";
 import '../FormScreen/FormScreen.css';
 
-function Register(props){
+
+function Register({
+	isScreenAccess,
+	onRegister,
+	isLogged,
+	isLoading,
+	errorText,
+  clearErrors}){
+
+    const history = useHistory();
+
+    useEffect(() => {
+      if (isLogged) {
+        history.push('/movies');
+      }
+    }, [history, isLogged]);
+
 	return(
 		<FormScreen
 		title='Добро пожаловать!'
@@ -9,10 +27,12 @@ function Register(props){
 		link='signin'
 		caption='Уже зарегистрированы?'
 		linkName='Войти'
-		isScreenAccess={props.isScreenAccess}>
-			<label className='form__label'>{props.name}</label>
-			<input className='form__input' type='text' required maxLength="30" minLength="2"/>
-			<span className='form__error-message'>Что-то пошло не так...</span>
+		isScreenAccess={isScreenAccess}
+		handleSubmit={onRegister}
+		isLoading={isLoading}
+
+		errorText={errorText}
+    clearErrors={clearErrors}>
 		</FormScreen>
 	);
 }
