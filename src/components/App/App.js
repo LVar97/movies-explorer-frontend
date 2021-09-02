@@ -226,7 +226,7 @@ function App() {
   };
 
   const saveMovie = (data) => {
-    console.log(data)
+   
     mainApi
       .saveMovie(data)
       .then((newMovie) => {

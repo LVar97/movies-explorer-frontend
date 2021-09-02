@@ -49,9 +49,8 @@ function MoviesCardList({
     }
   }, [])
 
-  console.log()
   React.useEffect(() => {
-    // console.log(renderAllMovies.length)
+   
     if (renderAllMovies !== undefined && renderAllMovies.length > 0){
       const windowSize = window.innerWidth
       const sizePortion = getCount(windowSize)
@@ -136,16 +135,6 @@ function MoviesCardList({
       )
     }
 
-    // if(!isSavedMoviesPage && renderAllMovies.length === 0 && renderAllMovies.length !== 0){
-    //   console.log('условте работает')
-    //   return(
-    //     <>
-    //     <ErrorMessage errorText='' className='message-help'/>
-    //     <ErrorMessage errorText='Фильмы не найдены' className='message-help'/>
-    //     </>
-    //   )
-    // }
-
     return(
       <>
       <ErrorMessage errorText='' className='message-help'/>
@@ -170,7 +159,6 @@ function MoviesCardList({
           savedMovies={savedMovies}
           />))) : renderStart()}
       </ul>
-      {/* {isSavedMoviesPage && renderStart()} */}
       {renderMoreButton()}
     </section>
   );
